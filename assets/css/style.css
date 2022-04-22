@@ -5,7 +5,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
+ :root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -68,19 +68,92 @@ body {
   outline: 0 !important;
 }
 
+.ingr-panel {
+  overflow-y: scroll;
+  height: 510px;
+}
 
-/* my elements */
+.ingredient {
+    background-color: rgb(241, 240, 240);
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.ingredient-selected {
+    background-color: #fd7e14;
+    text-transform: uppercase;
+}
+
+.flex-section {
+    gap: 10px;
+}
+
+#ingredients-cards {
+    color: gray;
+}
+
+.hide-card {
+    display: none;
+}
+
+.ingredients-cards + .ingredients-cards {
+    margin-top: 20px;
+}
+
+
 .cat-button {
   width: 60px;
   height: 60px;
   outline-style:initial;
   border-radius: 100px;
   cursor: pointer;
-  background-image: url("img/cat-1.jpg");
+  background-size: cover;
 }
 
+.search-width {
+  width: 310px;
+}
 
+.align-right {
+  position: absolute;
+  right: 0px;
+  padding: 60x;
+}
 
+.btn1 {
+  background-image: url("../img/cat-1.jpg");
+}
+
+.btn2 {
+  background-image: url("../img/cat-2.jpg");
+}
+
+.btn3 {
+  background-image: url("../img/cat-24.jpg");
+}
+
+.btn4 {
+  background-image: url("../img/cat-6.jpg");
+}
+
+.btn5 {
+  background-image: url("../img/easy.jpg");
+}
+
+.btn6 {
+  background-image: url("../img/cat-20.jpg");
+}
+
+.btn7 {
+  background-image: url("../img/cat-24.jpg");
+}
+
+/*.cat-button{
+  background-image: url('../img/Butter-Chicken.jpg');  
+  background-size: cover;
+}*/
 .text1 {
   color:white;
   font-family: 'Times New Roman', Times, serif;
@@ -161,7 +234,6 @@ body {
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
-
 hr {
   box-sizing: content-box;
   height: 0;
@@ -729,7 +801,6 @@ pre code {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
-  
 }
 
 .no-gutters {
@@ -3443,7 +3514,7 @@ input[type="button"].btn-block {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  width: 100%;
+  width: 120%;
 }
 
 .input-group > .form-control,

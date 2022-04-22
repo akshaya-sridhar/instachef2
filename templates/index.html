@@ -1,15 +1,11 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="utf-8">
     <title>InstaChef Dashboard</title>
-    
-    <!-- Font Awesome -->
-    <link href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css'%}" rel="stylesheet">
-
-    <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'css/style.css'%}" rel="stylesheet">
 </head>
 
@@ -26,26 +22,28 @@
           </nav>
         <div class="col-lg-6 col-6 text-left">
             <form action="">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products">
+                <div class="input-group search-width">
+                    <input type="text" class="form-control" placeholder="Search by dishes/ingredients">
                     <div class="input-group-append">
                         <span class="input-group-text bg-transparent text-primary">
-                            <i class="fa fa-search"></i>
+                            <i class="fa fa-search" ></i>
                         </span>
                     </div>
+                    <a href="/Requestrecipe" class="nav-item nav-link align-items-center ">Request Recipe</a>
+                    <a href="/contact" class="nav-item nav-link active">Contact Us</a>
                 </div>
             </form>
         </div>
        
         <div class="col-lg-3 col-6 text-right">
-            <a href="">
+            <a href="/login" class="btn border">
                 <i class="fa fa-user text-primary"></i> 
             </a>
             <a href="" class="btn border">
                 <i class="fas fa-heart text-primary"></i>
                 <span class="badge">0</span>
             </a>
-            <a href="" class="btn border">
+            <a href="/cart" class="btn border">
                 <i class="fas fa-shopping-cart text-primary"></i>
                 <span class="badge">0</span>
             </a>
@@ -58,54 +56,118 @@
     <!-- Navbar Start -->
     <div class="container-fluid mb-5">
         <div class="row border-top px-xl-5">
-            <div class="col-lg-3 d-none d-lg-block" style=" overflow-y: scroll;">
+            <div class="col-lg-3 d-none d-lg-block ingr-panel" >
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;" >
                     <h6 class="m-0">Ingredients</h6>
                 </a>
-                <div class="set-btn">
-                        <button class="ingr-btn">apple</button>
-                        <button class="ingr-btn">rice</button>
-                        <button class="ingr-btn">wheat</button>
-                </div>
-                <div class="set-btn">
-                    <button class="ingr-btn">salt</button>
-                    <button class="ingr-btn">potato</button>
-                    <button class="ingr-btn">coriander</button>
-                </div>
-                <div class="set-btn">
-                    <button class="ingr-btn">turmeric</button>
-                    <button class="ingr-btn">tomato</button>
-                    <button class="ingr-btn">onion</button>
-            </div>
-            <div class="set-btn">
-                <button class="ingr-btn">capsicum</button>
-                <button class="ingr-btn">chilli</button>
-                <button class="ingr-btn">black-salt</button>
-            </div>
-            <div class="set-btn">
-                <button class="ingr-btn">garlic</button>
-                <button class="ingr-btn">turmeric</button>
-                <button class="ingr-btn">spinach</button>
-            </div>
-        <div class="set-btn">
-            <button class="ingr-btn">milk</button>
-            <button class="ingr-btn">bread</button>
-            <button class="ingr-btn">jam</button>
-        </div>
-        <div class="set-btn">
-            <button class="ingr-btn">butter</button>
-            <button class="ingr-btn">cloves</button>
-            <button class="ingr-btn">ginger</button>
-        </div>
-        <div class="set-btn">
-            <button class="ingr-btn">oil</button>
-            <button class="ingr-btn">ghee</button>
-            <button class="ingr-btn">chilli</button>
-        </div>
 
-                  
+                <div class="card ingredients-cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Vegetables & Greens</h5>
+                        <p class="card-text">0/100 ingredients</p>
+                        <hr>
 
-         </div>   
+                        <div class="d-flex flex-wrap flex-section" id="vegetables-section">
+                            <div class="ingredient">garlic</div>
+                            <div class="ingredient">onion</div>
+                            <div class="ingredient">bell pepper</div>
+                            <div class="ingredient">tomato</div>
+                            <div class="ingredient">carrot</div>
+                            <div class="ingredient" id="ingredients-vegetables">+94 More</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card ingredients-cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Fruits & Berries</h5>
+                        <p class="card-text">0/100 ingredients</p>
+                        <hr>
+
+                        <div class="d-flex flex-wrap flex-section" id="fruits-section">
+                            <div class="ingredient">orange</div>
+                            <div class="ingredient">pineapple</div>
+                            <div class="ingredient">mango</div>
+                            <div class="ingredient">pomegranate</div>
+                            <div class="ingredient">blackberry</div>
+                            <div class="ingredient">blueberry</div>
+                            <div class="ingredient" id="ingredients-fruits">+94 More</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card ingredients-cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Dairy & Eggs</h5>
+                        <p class="card-text">0/64 ingredients</p>
+                        <hr>
+                        <div class="d-flex flex-wrap flex-section" id="dairy-section">
+                            <div class="ingredient">butter</div>
+                            <div class="ingredient">egg</div>
+                            <div class="ingredient">milk</div>
+                            <div class="ingredient">cream</div>
+                            <div class="ingredient">yogurt</div>
+                            <div class="ingredient">buttermilk</div>
+                            <div class="ingredient" id="ingredients-dairy">+58 More</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card ingredients-cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Herbs & Spices</h5>
+                        <p class="card-text">0/100 ingredients</p>
+                        <hr>
+
+                        <div class="d-flex flex-wrap flex-section" id="herbs-section">
+                            <div class="ingredient">cinnamon</div>
+                            <div class="ingredient">parsley</div>
+                            <div class="ingredient">paprika</div>
+                            <div class="ingredient">cumin</div>
+                            <div class="ingredient">chili powder</div>
+                            <div class="ingredient">oregano</div>
+                            <div class="ingredient" id="ingredients-herbs">+94 More</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card ingredients-cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Baking</h5>
+                        <p class="card-text">0/100 ingredients</p>
+                        <hr>
+
+                        <div class="d-flex flex-wrap flex-section" id="baking-section">
+                            <div class="ingredient">flour</div>
+                            <div class="ingredient">vanilla</div>
+                            <div class="ingredient">baking powder</div>
+                            <div class="ingredient">baking soda</div>
+                            <div class="ingredient">cornstarch</div>
+                            <div class="ingredient">yeast</div>
+                            <div class="ingredient" id="ingredients-baking">+94 More</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card ingredients-cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Meat</h5>
+                        <p class="card-text">0/100 ingredients</p>
+                        <hr>
+
+                        <div class="d-flex flex-wrap flex-section" id="meat-section">
+                            <div class="ingredient">chicken</div>
+                            <div class="ingredient">bacon</div>
+                            <div class="ingredient">ground beef</div>
+                            <div class="ingredient">beef steak</div>
+                            <div class="ingredient">ham</div>
+                            <div class="ingredient">ground pork</div>
+                            <div class="ingredient" id="ingredients-meat">+94 More</div>
+                        </div>
+                    </div>
+                </div>
+            
+         
+        </div>
             <div class="col-lg-9">
                 <table class = "cat-table">
                     <tr >
@@ -355,8 +417,15 @@
             </div>
         </div>
     <!-- Footerbar End -->
+<!-- JavaScript Libraries -->
+<script src="{% static 'https://code.jquery.com/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static './lib/easing/easing.min.js' %}"></script>
+<script src="{% static './lib/owlcarousel/owl.carousel.js' %}"></script>
+<script src="{% static './js/ingredients-script.js' %}"></script>
 
-   
+{% block content %}{% endblock %}
+
 </body>
 
 </html>

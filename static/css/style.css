@@ -1,3 +1,4 @@
+
 /******* Bootstrap Theming ********/
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
@@ -5,7 +6,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-:root {
+ :root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -68,8 +69,41 @@ body {
   outline: 0 !important;
 }
 
+.ingr-panel {
+  overflow-y: scroll;
+  height: 510px;
+}
 
-/* my elements */
+.ingredient {
+    background-color: rgb(241, 240, 240);
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--gray);
+    cursor: pointer;
+}
+
+.ingredient-selected {
+    background-color: #fd7e14;
+    text-transform: uppercase;
+}
+
+.flex-section {
+    gap: 10px;
+}
+
+#ingredients-cards {
+    color: gray;
+}
+
+.hide-card {
+    display: none;
+}
+
+.ingredients-cards + .ingredients-cards {
+    margin-top: 20px;
+}
+
+
 .cat-button {
   width: 60px;
   height: 60px;
@@ -77,6 +111,16 @@ body {
   border-radius: 100px;
   cursor: pointer;
   background-size: cover;
+}
+
+.search-width {
+  width: 310px;
+}
+
+.align-right {
+  position: absolute;
+  right: 0px;
+  padding: 60x;
 }
 
 .btn1 {
@@ -759,7 +803,6 @@ pre code {
   flex-wrap: wrap;
   margin-right: -15px;
   margin-left: -15px;
-  
 }
 
 .no-gutters {
@@ -3473,7 +3516,7 @@ input[type="button"].btn-block {
   display: flex;
   flex-wrap: wrap;
   align-items: stretch;
-  width: 100%;
+  width: 120%;
 }
 
 .input-group > .form-control,

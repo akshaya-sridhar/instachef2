@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +8,7 @@
     <title>Shopping List</title>
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
 </head>
 
 <body style="max-width: 100%;overflow-x: hidden;">
@@ -15,7 +17,7 @@
         <nav class="navbar navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="img/Logo1.png" alt="Logo" width="210px" height="70px">
+                    <img src="{% static 'img/Logo1.png'%}" alt="Logo" width="210px" height="70px">
                 </a>
             </div>
         </nav>
