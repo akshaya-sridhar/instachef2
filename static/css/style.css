@@ -1,4 +1,3 @@
-
 /******* Bootstrap Theming ********/
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
@@ -235,7 +234,6 @@ body {
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
 .show {display:block;}
-
 hr {
   box-sizing: content-box;
   height: 0;

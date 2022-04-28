@@ -6,7 +6,12 @@
 <head>
     <meta charset="utf-8">
     <title>InstaChef Dashboard</title>
-    <link href="{% static 'css/style.css'%}" rel="stylesheet">
+    
+   <!-- Font Awesome -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <link href="{% static 'css/font-awesome/all.css' %}" rel="stylesheet">
+   <link href="{% static 'css/style.css'%}" rel="stylesheet" type="text/css">
 </head>
 
 
@@ -29,10 +34,7 @@
                             <i class="fa fa-search" ></i>
                         </span>
                     </div>
-                    {% if user.is_authenticated %}
-                    Welcome, {{user.username}}
-                    {% endif %}
-                    <a href="/requestrecipe" class="nav-item nav-link align-items-center ">Request Recipe</a>
+                    <a href="/Requestrecipe" class="nav-item nav-link align-items-center ">Request Recipe</a>
                     <a href="/contact" class="nav-item nav-link active">Contact Us</a>
                 </div>
             </form>
@@ -40,7 +42,7 @@
        
         <div class="col-lg-3 col-6 text-right">
             <a href="/login" class="btn border">
-                <i class="fa fa-user text-primary"></i> 
+                <i class="fa fa-user fa-fw text-primary"></i> 
             </a>
             <a href="" class="btn border">
                 <i class="fas fa-heart text-primary"></i>
@@ -243,102 +245,22 @@
         <div class="text-center mb-4">
             <h2 class="section-title px-5"><span class="px-2">Recipes</span></h2>
         </div>
+
         <div class="row px-xl-5 pb-3">
+            {%for i in rec%}
             <div class="col-lg-4 col-md-6 pb-1">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="{% static 'img/cat-1.jpg'%}" alt="">
+                        <img class="img-fluid" src="{{i.img.url}}" alt="">
                     </a>
-                    <h5 class="font-weight-semi-bold m-0">Vada</h5>
+                    <h5 class="font-weight-semi-bold m-0">{{i.name}}</h5>
                     <div class="star">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+                       
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                   
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="{% static 'img/cat-2.jpg'%}" alt="">
-                    </a>
-                    <h5 class="font-weight-semi-bold m-0">Burger</h5>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                   
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="{% static 'img/cat-3.jpg'%}" alt="">
-                    </a>
-                    <h5 class="font-weight-semi-bold m-0">Idli - Chatni</h5>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star "></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                   
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="{% static 'img/cat-4.jpg'%}" alt="">
-                    </a>
-                    <h5 class="font-weight-semi-bold m-0">Broccoli Salad</h5>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="{% static 'img/cat-5.jpg'%}" alt="">
-                    </a>
-                    <h5 class="font-weight-semi-bold m-0">Fish Curry</h5>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star "></span>
-                        <span class="fa fa-star "></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 pb-1">
-                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="{% static 'img/cat-6.jpg'%}" alt="">
-                    </a>
-                    <h5 class="font-weight-semi-bold m-0">French Pizza</h5>
-                    <div class="star">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star "></span>
-                        <span class="fa fa-star "></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+            
         </div>
     </div>
     <!-- Categories End -->
@@ -421,11 +343,11 @@
         </div>
     <!-- Footerbar End -->
 <!-- JavaScript Libraries -->
-<script src="{% static 'https://code.jquery.com/jquery-3.4.1.min.js' %}"></script>
-<script src="{% static 'https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static './lib/easing/easing.min.js' %}"></script>
-<script src="{% static './lib/owlcarousel/owl.carousel.js' %}"></script>
-<script src="{% static './js/ingredients-script.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{% static '/lib/easing/easing.min.js' %}"></script>
+<script src="{% static '/lib/owlcarousel/owl.carousel.js' %}"></script>
+<script src="{% static '/js/ingredients-script.js' %}"></script>
 
 {% block content %}{% endblock %}
 
