@@ -42,7 +42,6 @@ class steps(models.Model):
     step_num = models.IntegerField()
     step_desc = models.CharField(max_length=200)
     step_time = models.IntegerField()
-    step_img = models.ImageField(upload_to='step_imgs')
     ingr_qty = models.ForeignKey(Ingredients)
 
 '''
