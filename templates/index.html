@@ -34,7 +34,7 @@
                             <i class="fa fa-search" ></i>
                         </span>
                     </div>
-                    <a href="/requestrecipe" class="nav-item nav-link align-items-center ">Request Recipe</a>
+                    <a href="/Requestrecipe" class="nav-item nav-link align-items-center ">Request Recipe</a>
                     <a href="/contact" class="nav-item nav-link active">Contact Us</a>
                 </div>
             </form>
@@ -174,36 +174,15 @@
          
         </div>
             <div class="col-lg-9">
-                <table class = "cat-table">
+                <table>
                     <tr >
-                        <td width="5%">
-                            <button class="cat-button btn1"></button>
-                            <address>North Indian</address>
-                        </td>
-                        <td  width="5%">
-                            <button class="cat-button btn2"></button>
-                            <address>South Indian</address>
-                        </td>
-                        <td  width="5%">
-                            <button class="cat-button btn3" ></button>
-                            <address>Chinese</address>
-                        </td>
-                        <td  width="5%">
-                            <button class="cat-button btn4"></button>
-                            <address>Italian</address>
-                        </td>
-                        <td  width="5%">
-                            <button class="cat-button btn5"></button>
-                            <address>Easy & Quick</address>
-                        </td>
-                        <td  width="5%">
-                            <button class="cat-button btn6"></button>
-                            <address>Ocassional</address>
-                        </td>
-                        <td  width="5%">
-                            <button class="cat-button btn7"></button>
-                            <address>Seasonal </address>
-                        </td>
+                       {%for j in cat%}
+                            <td width="5%">
+                                <button class="cat-button" style="background-image : url('{{j.cat_img.url}}')" ></button>
+                                <address>{{j.cat_name}}</address>
+                            </td>
+                             {%endfor%}
+                        
                     </tr>
                 </table>
                 <div id="header-carousel" class="carousel slide" data-ride="carousel">
@@ -248,12 +227,13 @@
 
         <div class="row px-xl-5 pb-3">
             {%for i in rec%}
-            <div class="col-lg-4 col-md-6 pb-1">
+            <div class="col-lg-4 col-md-6 pb-1 word">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
                     <a href="" class="cat-img position-relative overflow-hidden mb-3">
                         <img class="img-fluid" src="{{i.img.url}}" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">{{i.name}}</h5>
+                    <p>{{i.rec_desc}}</p>
                     <div class="star">
                        
                     </div>

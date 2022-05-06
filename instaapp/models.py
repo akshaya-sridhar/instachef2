@@ -3,29 +3,49 @@
 from distutils.command.upload import upload
 from unittest.util import _MAX_LENGTH
 from django.db import models
-from django.forms import CharField, ImageField, IntegerField
+from django.forms import CharField, ImageField
 
 # Create your models here.
-'''
+
 class catdetails(models.Model):
-    catid=models.AutoField(primary_key=True)
-    diet=models.CharField(max_length=50)
-    main_ing=models.CharField(max_length=50)
-    cuisine=models.CharField(max_length=50)
-    rcptype=models.Model(CharField)
+    cat_name=models.CharField(max_length=50)
+    cat_img=models.ImageField(upload_to="cat_img")
+
+    def __str__(self):
+        return self.cat_name
+
 
 class Recipe_detail(models.Model):
-    rcpid = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=100)
-    catid = models.ForeignKey(catdetails, default=0)
-    preptime=models.IntegerField(default=5)
-    cooktime=models.IntegerField(default=5)
-    servings=models.IntegerField(default=2)
-    short_desc=models.CharField(max_length=200)
+    #id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, default="null")
+    rec_type=models.CharField(max_length=10, default="null")
+    prep_time=models.SmallIntegerField(default=5)
+    serve_people=models.SmallIntegerField(default=2)
+    meal=models.CharField(max_length=50, default="allmeals")
+    rec_desc=models.CharField(max_length=300, default="null")
     img = models.ImageField(upload_to='recipe_imgs')
-    difficulty=models.IntegerChoices()
+    cat_name = models.ForeignKey(catdetails, default=1,on_delete=models.DO_NOTHING)
 
+class Recipe_info(models.Model):
+    #id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=100, default="null")
+    rec_type=models.CharField(max_length=10, default="null")
+    prep_time=models.SmallIntegerField(default=5)
+    serve_people=models.SmallIntegerField(default=2)
+    meal=models.CharField(max_length=50, default="allmeals")
+    rec_desc=models.CharField(max_length=300, default="null")
+    img = models.ImageField(upload_to='recipe_imgs')
+    cat_name = models.ForeignKey(catdetails, default=1,on_delete=models.DO_NOTHING)
+
+class Ingredients(models.Model):
     
+    ing_name = models.CharField(max_length=100, default="null")
+    ing_type= models.CharField(max_length=50, default="null")
+    def __str__(self):
+        return self.ingr_name
+
+
+    '''
 
 class Ingredients(models.Model):
     ing_id=models.AutoField(primary_key=True)
@@ -60,13 +80,3 @@ class shoppinglist(models.Model):
 	-recipe_id
 	-user_id '''
 
-class Recipe_detail(models.Model):
-
-    name = models.CharField(max_length=100)
-    img = models.ImageField(upload_to='recipe_imgs')
-
-class Ingredients(models.Model):
-    
-    ing_name = models.CharField(max_length=100)
-    def __str__(self):
-        return self.ingr_name

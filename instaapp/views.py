@@ -1,15 +1,17 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 
-from instaapp.models import Recipe_detail
+from instaapp.models import Recipe_detail, Recipe_info, catdetails
 
 # Create your views here.
 def index(request):
-    rec=Recipe_detail.objects.all()
-    return render(request, "index.html",{'rec':rec})
+    rec=Recipe_info.objects.all()
+    cat=catdetails.objects.all()
+    params={'rec':rec, 'cat':cat}
+    return render(request, "index.html",params)
 
 def login(request):
-    return render(request, "login.html")
+    return render(request, "account/login.html")
 
 @login_required
 def cart(request):

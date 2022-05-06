@@ -18,11 +18,11 @@ from django.urls import path, include
 from xml.dom.minidom import Document
 from django.conf import settings
 from django.conf.urls.static import static
-#from django.views.generic import TemplateView
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('',include('instaapp.urls')),
-    #path('', TemplateView.as_view(template_name="index.html")),
+    path('', TemplateView.as_view(template_name="index.html"), name='index'),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
 ]
