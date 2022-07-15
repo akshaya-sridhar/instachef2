@@ -1,4 +1,5 @@
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,494 +15,184 @@
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="{% static 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap' %}" rel="stylesheet"> 
+    <link
+        href="{% static 'https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap' %}"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css' %}" rel="stylesheet">
+    <link href="{% static 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css' %}"
+        rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
     <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="{% static 'css/style.css'%}" rel="stylesheet">
+    <!-- <link href="{% static 'css/style1.css'%}" rel="stylesheet"> -->
+    <link href="{% static 'css/font-awesome/all.css' %}" rel="stylesheet">
+    <link href="{% static 'css/style.css'%}" rel="stylesheet" type="text/css">
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static '/lib/easing/easing.min.js' %}"></script>
+    <script src="{% static '/lib/owlcarousel/owl.carousel.js' %}"></script>
+    <script src="{% static '/js/ingredients-script.js' %}"></script>
+
 </head>
 
 <body style="max-width: 100%;overflow-x: hidden;">
 
-    <div class="row align-items-center py-3 px-xl-5">
+    <div class="row align-items-center py-3 px-xl-5" id="parent-topbar">
         <nav class="navbar navbar-light bg-light">
             <div class="container">
-              <a class="navbar-brand" href="#">
-                <img src="{% static 'img/Logo1.png' %}" alt="Logo" width="210px" height="70px">
-              </a>
-            </div>
-          </nav>
-        <div class="col-lg-6 col-6 text-left">
-            <form action="">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for products">
-                    <div class="input-group-append">
-                        <span class="input-group-text bg-transparent text-primary">
-                            <i class="fa fa-search"></i>
-                        </span>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="col-lg-3 col-6 text-right">
-            <a href="" class="btn border">
-                <i class="fas fa-heart text-primary"></i>
-                <span class="badge">0</span>
-            </a>
-            <a href="" class="btn border">
-                <i class="fas fa-shopping-cart text-primary"></i>
-                <span class="badge">0</span>
-            </a>
-        </div>
-    </div>
-    </div>
-    <!-- Topbar End -->
-
-
-    <div class="container-fluid mb-5">
-        <div class="row border-top px-xl-5">
-            <div class="col-lg-3 d-none d-lg-block">
-                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;">
-                    <h6 class="m-0">Categories</h6>
-                    <i class="fa fa-angle-down text-dark"></i>
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'img/Logo1.png'%}" alt="Logo" width="210px" height="70px">
                 </a>
-                <nav class="collapse show navbar navbar-vertical navbar-light align-items-start  border border-to border-bottom-0" id="navbar-vertical">
-                    <div class="navbar-nav w-100 overflow-hidden" style="height: 410px">
-                        <a href="" class="nav-item nav-link">Italian</a>
-                        <a href="" class="nav-item nav-link">North Indian</a>
-                        <a href="" class="nav-item nav-link">South Indian</a>
-                        <a href="" class="nav-item nav-link">Chinese</a>
-                        <a href="" class="nav-item nav-link">Breakfast</a>
-                        <a href="" class="nav-item nav-link">Main Course</a>
-                        <a href="" class="nav-item nav-link">Snacks</a>
-                        <a href="" class="nav-item nav-link">Fast Food</a>
-                        <a href="" class="nav-item nav-link">Diet Food</a>
-                        <a href="" class="nav-item nav-link">Baked Item</a>
-                        <a href="" class="nav-item nav-link">Desert</a>
+            </div>
+        </nav>
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="/" class="nav-item nav-link">Home</a>
+                        <a href="/requestrecipe" class="nav-item nav-link">Request Recipe</a>
+                        <a href="/cart" class="nav-item nav-link">Ingredients for Pantry</a>
+                        <a href="/contact" class="nav-item nav-link">Contact</a>
                         
-                    </div>
-                </nav>
-            </div>
-            <div class="col-lg-9">
-                <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                    <a href="" class="text-decoration-none d-block d-lg-none">
-                        <h1 class="m-0 display-5 font-weight-semi-bold"><span class="text-primary font-weight-bold border px-3 mr-1">E</span>Shopper</h1>
-                    </a>
-                    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                        <div class="navbar-nav mr-auto py-0">
-                            <a href="/index" class="nav-item nav-link active">Home</a>
-                            <a href="/Requestrecipe" class="nav-item nav-link">Request Recipe</a>
-                            <a href="/cart" class="nav-item nav-link">Ingredients for Pantry</a>
-                            <a href="/contact" class="nav-item nav-link">Contact</a>
-                        </div>
-                        <div class="navbar-nav ml-auto py-0">
-                            <a href="login-form-20\Login" class="nav-item nav-link">Login</a>
-                            <a href="login-form-20\Signup.html" class="nav-item nav-link">Signup</a>
-                        </div>
-                    </div>
-                </nav>
-                
-            </div>
+                </div>
+            </nav>
         </div>
-    </div>
-    <!-- Navbar End -->
-
-
-    <!-- Page Header Start -->
-    <div class="container-fluid bg-secondary mb-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px;background-color :rgb(255, 115, 0); font-family: 'Font Awesome 5 Free'">
-            <h1 class="font-weight-semi-bold text-uppercase my-3">Request Recipe</h1>
         </div>
+    
+ <!-- Page Header Start -->
+ <div class="container-fluid bg-secondary mb-5">
+    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 200px;background-color :rgb(255, 115, 0); font-family:Georgia, 'Times New Roman', Times, serif;">
+        <h1 class="font-weight-semi-bold text-uppercase my-3">Request Recipe</h1>
     </div>
-    <!-- Page Header End -->
+</div>
+<!-- Page Header End -->
 
 
-    <!-- Shop Start -->
-    <div class="container-fluid pt-5">
-        <div class="row px-xl-5">
-            <!-- Shop Sidebar Start -->
-            <div class="col-lg-3 col-md-12">
-                <!-- Price Start -->
-                <div class="border-bottom mb-4 pb-4">
-                    <h5 class="font-weight-semi-bold mb-4">Filter by Calorie</h5>
-                    <!-- <form> -->
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="price-all">
-                            <label class="custom-control-label" for="price-all">Max Calories</label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-1">
-                            <label class="custom-control-label" for="price-1">0 - 100 </label>
-                            <span class="badge border font-weight-normal">150</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-2">
-                            <label class="custom-control-label" for="price-2">100 - 200</label>
-                            <span class="badge border font-weight-normal">295</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-3">
-                            <label class="custom-control-label" for="price-3">200 - 300</label>
-                            <span class="badge border font-weight-normal">246</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="price-4">
-                            <label class="custom-control-label" for="price-4">300 - 400</label>
-                            <span class="badge border font-weight-normal">145</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="price-5">
-                            <label class="custom-control-label" for="price-5">400 - 500</label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                    </form> 
-                </div>
-                <!-- Price End -->
-                
-                <!-- Color Start -->
-                <div class="border-bottom mb-4 pb-4">
-                    <h5 class="font-weight-semi-bold mb-4">Filter by meal</h5>
-                    <form>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="color-all">
-                            <label class="custom-control-label" for="price-all">Breakfast</label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-1">
-                            <label class="custom-control-label" for="color-1">Lunch</label>
-                            <span class="badge border font-weight-normal">150</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-2">
-                            <label class="custom-control-label" for="color-2">Snack</label>
-                            <span class="badge border font-weight-normal">295</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="color-3">
-                            <label class="custom-control-label" for="color-3">Dinner</label>
-                            <span class="badge border font-weight-normal">246</span>
-                        </div>
-                    </form>
-                </div>
-                <!-- Color End -->
-
-                <!-- Size Start -->
-                <div class="mb-5">
-                    <h5 class="font-weight-semi-bold mb-4">Filter by time</h5>
-                    <form>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" checked id="size-all">
-                            <label class="custom-control-label" for="size-all">90 mins</label>
-                            <span class="badge border font-weight-normal">1000</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-1">
-                            <label class="custom-control-label" for="size-1">60 mins</label>
-                            <span class="badge border font-weight-normal">150</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-2">
-                            <label class="custom-control-label" for="size-2">45 mins</label>
-                            <span class="badge border font-weight-normal">295</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-3">
-                            <label class="custom-control-label" for="size-3">30 mins</label>
-                            <span class="badge border font-weight-normal">246</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between mb-3">
-                            <input type="checkbox" class="custom-control-input" id="size-4">
-                            <label class="custom-control-label" for="size-4">20 mins</label>
-                            <span class="badge border font-weight-normal">145</span>
-                        </div>
-                        <div class="custom-control custom-checkbox d-flex align-items-center justify-content-between">
-                            <input type="checkbox" class="custom-control-input" id="size-5">
-                            <label class="custom-control-label" for="size-5">15mins</label>
-                            <span class="badge border font-weight-normal">168</span>
-                        </div>
-                    </form>
-                </div>
-                <!-- Size End -->
-            </div>
-            <!-- Shop Sidebar End -->
-
-
-            <!-- Shop Product Start -->
-            <div class="col-lg-9 col-md-12">
-                <div class="row pb-3">
-                    <div class="col-12 pb-1">
-                        <div class="d-flex align-items-center justify-content-between mb-4">
-                            <form action="">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search by name">
-                                    <div class="input-group-append">
-                                        <span class="input-group-text bg-transparent text-primary">
-                                            <i class="fa fa-search"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                            </form>
-                            <div class="dropdown ml-4">
-                                <button class="btn border dropdown-toggle" type="button" id="triggerId" data-toggle="dropdown" aria-haspopup="true"
-                                        aria-expanded="false">
-                                            Sort by
-                                        </button>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="triggerId">
-                                    <a class="dropdown-item" href="#">Latest</a>
-                                    <a class="dropdown-item" href="#">Popularity</a>
-                                    <a class="dropdown-item" href="#">Best Rating</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border ">
-                                <img class="img-fluid w-100" src="{% static 'img/product-1.jpg'%}" alt="">
-                            </div>
-                            <div class="card-body border-left border-right text-center  pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Dal Makhani</h6>
-                                
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border ">
-                                <img class="img-fluid w-100" src="{% static 'img/product-2.jpg' %}" alt="">
-                            </div>
-                            <div class="card-body border-left border-right text-center  pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Butter Chicken</h6>
-                                
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border ">
-                                <img class="img-fluid w-100" src="{% static 'img/product-3.jpg' %}" alt="">
-                            </div>
-                            <div class="card-body border-left border-right text-center  pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Shahi Tukra</h6>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border ">
-                                <img class="img-fluid w-100" src="{% static 'img/product-4.jpg' %}" alt="">
-                            </div>
-                            <div class="card-body border-left border-right text-center  pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Dum Aloo</h6>
-                               
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border ">
-                                <img class="img-fluid w-100" src="{% static 'img/product-5.jpg' %}" alt="">
-                            </div>
-                            <div class="card-body border-left border-right text-center  pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Hariyali Kabab</h6>
-                               
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border ">
-                                <img class="img-fluid w-100" src="{% static 'img/product-6.jpg' %}" alt="">
-                            </div>
-                            <div class="card-body border-left border-right text-center  pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Paneer butter masala</h6>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border ">
-                                <img class="img-fluid w-100" src="{% static 'img/product-7.jpg' %}" alt="">
-                            </div>
-                            <div class="card-body border-left border-right text-center  pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Gulab Jamun</h6>
-                                
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border ">
-                                <img class="img-fluid w-100" src="{% static 'img/product-8.jpg' %}" alt="">
-                            </div>
-                            <div class="card-body border-left border-right text-center  pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Chiceken Pasta</h6>
-                                
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 col-sm-12 pb-1">
-                        <div class="card product-item border-0 mb-4">
-                            <div class="card-header product-img position-relative overflow-hidden bg-transparent border ">
-                                <img class="img-fluid w-100" src="{% static 'img/product-1.jpg' %}" alt="">
-                            </div>
-                            <div class="card-body border-left border-right text-center  pt-4 pb-3">
-                                <h6 class="text-truncate mb-3">Chicken sandwich</h6>
-                            </div>
-                            <div class="card-footer d-flex justify-content-between bg-light border">
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-eye text-primary mr-1"></i>View Detail</a>
-                                <a href="" class="btn btn-sm text-dark "><i class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-12 pb-1" >
-                        <nav aria-label="Page navigation">
-                          <ul class="pagination justify-content-center" style="background-color: rgb(253, 253, 253);">
-                            <li class="page-item disabled">
-                              <a class="page-link" href="#" aria-label="Previous">
-                                <span aria-hidden="true">&laquo;</span>
-                                <span class="sr-only">Previous</span>
-                              </a>
-                            </li>
-                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                              <a class="page-link" href="#" aria-label="Next">
-                                <span aria-hidden="true">&raquo;</span>
-                                <span class="sr-only">Next</span>
-                              </a>
-                            </li>
-                          </ul>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            <!-- Shop Product End -->
+<!-- Form  -->
+<!-- <div id="mainform" class="mainform needs-validation" novalidate method="POST">
+    
+    <form method="post" class="main-form needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="rrecipe_name">Name of the Requested Recipe</label>
+            <input type="text" name="rrec_name" id="rrec_name" 
+                class="form-control" required>
+            <small class="form-text text-muted">
+                Enter the name of your requested recipe here.
+            </small>
+            <div class="invalid-feedback">Please fill the field before submission.</div>
         </div>
-    </div>
-    <!-- Shop End -->
+        <div>
+            
+            <label for="rrec_type" class="form-label">Recipe Type</label>
+            <select class="form-control" name="rrec_type" id="rrec_type" required>
+                <option value="veg">Veg</option>
+                <option value="non veg">Non Veg</option>
+                <option value="vegan">Vegan</option>
+            </select>
+        </div>
+        <div>
+            <label for="rcat_name" class="form-label">Category Name</label>
+            <select class="form-control" name="rcat_name" id="rcat_name" required> 
+                {{form}}
+            </select>
+
+            <select class="form-control" name="rcat_name" id="rcat_name" required>
+                <option value="North Indian">North Indian</option>
+                <option value="Chinese">Chinese</option>
+                <option value="South Indian">South Indian</option>
+            </select> 
+
+        </div>
+        <br>
+       <button type="submit" class="btn btn-primary" color>Submit</button>
+
+    </form>  -->
+    <div class="container pt-4">
+        {% include 'messages.html' %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form | crispy}}
+        <input type="submit">
+    </form> 
+</div>
 
 
-     <!-- Footer Start -->
-     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+
+    <!-- Footer Start -->
+    <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
         <div class="row px-xl-5 pt-5">
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="{% static 'img/Logo1.png' %}" alt="Logo" width="210px" height="70px">
                 </a>
-                 <br><br>
-                <p>A personalized Cooking Website which not only helps you in cooking but also allows you to post recipes.</p>
-                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>1st Main S.G Palya, Benagluru</p>
-                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>InstaChef@gmail.com</p>
-                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+                <br><br>
+                <!--
+                <p></i>A personalized cooking website which  </p>
+                <p>not only helps you in cooking but also </p>
+                <p>allows you to post recipes.</p>-->
+                <p>1st Main S.G Palya, Benagluru</p>
+                <p>InstaChef@gmail.com</p>
+                <p>+012 345 67890</p>
             </div>
             <div class="col-lg-8 col-md-12">
                 <div class="row">
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="/index"><i class="fa fa-angle-right mr-2"></i>Home</a>
-                            
-                            <a class="text-dark mb-2" href="/cart"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                            <a class="text-dark mb-2" href="/checkout"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-dark mb-2" href="/"><i class="fa fa-angle-right mr-2"></i>Home</a>
+
+                            <a class="text-dark mb-2" href="/cart"><i class="fa fa-angle-right mr-2"></i>Shopping
+                                Cart</a>
+                            <!-- <a class="text-dark mb-2" href="/checkout"><i
+                                    class="fa fa-angle-right mr-2"></i>Checkout</a> -->
                             <a class="text-dark" href="/contact"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
                         </div>
                     </div>
-                   
+
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Contact Us</h5>
                         <form action="">
                             <div class="form-group">
-                                <input type="text" class="form-control border-0 py-4" placeholder="Your Name" required="required" />
+                                <input type="text" class="form-control border-0 py-4" placeholder="Your Name"
+                                    required="required" />
                             </div>
                             <div class="form-group">
                                 <input type="email" class="form-control border-0 py-4" placeholder="Your Email"
                                     required="required" />
                             </div>
                             <div>
-                                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe Now</button>
+                                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe
+                                    Now</button>
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- Footerbar Start -->
-    <div class="container-fluid2">
-        <div class="row bg-secondary py-2 px-xl-5">
-            <div class="col-lg-6 d-none d-lg-block">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text" href="">FAQs</a>
-                    <span class="text pl-2">| </span>
-                    <a class="text" href=""> Help</a>
-                    <span class="text pl-2">|</span>
-                    <a class="text" href=""> Support</a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    <!-- Footerbar End -->
+        <!-- Foterbar End -->
+
+            <!-- <script>
+                var form=document.querySelector('.needs-validation');
+                form.addEventListener('submit', function(event)
+                {
+                    if(form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+
+                    else {
+                        window.alert('Form submitted sucessfully!');
+                    }
+
+                    form.ClassList.add('was-validated');
+                })
+            </script> -->
 
 </body>
 

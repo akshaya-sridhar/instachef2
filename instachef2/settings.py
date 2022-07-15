@@ -38,9 +38,8 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    #'allauth.socialaccount.providers.github',
-    #'allauth.socialaccount.providers.facebook',
     'crispy_forms',
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -48,9 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    
+    #'django.contrib.sites.models.Site',
 ]
 
-SITE_ID=2 
+SITE_ID=2
 
 # newly added
 LOGIN_REDIRECT_URL = '/'
@@ -107,6 +108,13 @@ WSGI_APPLICATION = 'instachef2.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
 
 DATABASES = {
     'default': {

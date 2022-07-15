@@ -9,6 +9,10 @@
     
    <!-- Font Awesome -->
    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
    
    <link href="{% static 'css/font-awesome/all.css' %}" rel="stylesheet">
    <link href="{% static 'css/style.css'%}" rel="stylesheet" type="text/css">
@@ -25,32 +29,49 @@
               </a>
             </div>
           </nav>
-        <div class="col-lg-6 col-6 text-left">
-            <form action="">
+        <!-- <div class="col-lg-6 col-6 text-left">
+            <form action="/search" method='get'>
                 <div class="input-group search-width">
-                    <input type="text" class="form-control" placeholder="Search by dishes/ingredients">
+                    <input type="text" class="form-control" placeholder="Search by dishes/ingredients" id='query' name='query'>
                     <div class="input-group-append">
                         <span class="input-group-text bg-transparent text-primary">
                             <i class="fa fa-search" ></i>
                         </span>
+                        <a href="/contact" class="nav-item nav-link align-items-center">Contact Us</a>
+                <a href="/requestrecipe" class="nav-item nav-link align-items-center ">Request Recipe</a>
                     </div>
-                    <a href="/Requestrecipe" class="nav-item nav-link align-items-center ">Request Recipe</a>
-                    <a href="/contact" class="nav-item nav-link active">Contact Us</a>
+                </div>
+                </form>
+            
+        </div>
+        -->
+
+        <div class="col-lg-6 col-6 text-left">
+            <form action="/search" method='get'>
+                <div class="input-group search-width">
+                    <input type="text" class="form-control" placeholder="Search by dishes/ingredients" id='query' name='query'>
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-transparent text-primary">
+                            <i class="fa fa-search" ></i>
+                        </span>
+                        <a href="/requestrecipe" class="nav-item nav-link align-items-center ">Request Recipe</a>
+                        <a href="/contact" class="nav-item nav-link align-items-center">Contact Us</a>
+                        
+                        
+                    </div>
                 </div>
             </form>
         </div>
-       
         <div class="col-lg-3 col-6 text-right">
             <a href="/login" class="btn border">
                 <i class="fa fa-user fa-fw text-primary"></i> 
             </a>
-            <a href="" class="btn border">
+            <!-- <a href="" class="btn border">
                 <i class="fas fa-heart text-primary"></i>
-                <span class="badge">0</span>
-            </a>
+                
+            </a> -->
             <a href="/cart" class="btn border">
                 <i class="fas fa-shopping-cart text-primary"></i>
-                <span class="badge">0</span>
             </a>
         </div>
 
@@ -65,123 +86,47 @@
                 <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;" >
                     <h6 class="m-0">Ingredients</h6>
                 </a>
-
+                
                 <div class="card ingredients-cards">
+                    <form method="post" action="/search_ingr">
+                        {% csrf_token %}
+                    {%for i in ingr_type%}
                     <div class="card-body">
-                        <h5 class="card-title">Vegetables & Greens</h5>
-                        <p class="card-text">0/100 ingredients</p>
+                        <h5 class="card-title">{{i}}</h5>
+                        {% comment %} <p class="card-text">0/100 ingredients</p> {% endcomment %}
                         <hr>
-
-                        <div class="d-flex flex-wrap flex-section" id="vegetables-section">
-                            <div class="ingredient">garlic</div>
-                            <div class="ingredient">onion</div>
-                            <div class="ingredient">bell pepper</div>
-                            <div class="ingredient">tomato</div>
-                            <div class="ingredient">carrot</div>
-                            <div class="ingredient" id="ingredients-vegetables">+94 More</div>
+                       
+                        <div class="d-flex flex-wrap flex-section" id="ingr_id">
+                            {%for j in ingr_name%}
+                                {%if j.ing_type == i %}
+                               
+                                    <input type ="checkbox" class = "ingredient" name="ingrs" value= {{j}}>
+                                    <label for="{{j}}">{{j}}</label>
+                                
+                                {%endif%}
+                            {%endfor%}
+                            {% comment %} <div class="ingredient" id="ingredients-vegetables">+94 More</div> {% endcomment %}
                         </div>
+                        
                     </div>
+                    {%endfor%}
+                    <input type="submit" id="button123" value="Search" >
+                </form>
                 </div>
-
-                <div class="card ingredients-cards">
-                    <div class="card-body">
-                        <h5 class="card-title">Fruits & Berries</h5>
-                        <p class="card-text">0/100 ingredients</p>
-                        <hr>
-
-                        <div class="d-flex flex-wrap flex-section" id="fruits-section">
-                            <div class="ingredient">orange</div>
-                            <div class="ingredient">pineapple</div>
-                            <div class="ingredient">mango</div>
-                            <div class="ingredient">pomegranate</div>
-                            <div class="ingredient">blackberry</div>
-                            <div class="ingredient">blueberry</div>
-                            <div class="ingredient" id="ingredients-fruits">+94 More</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card ingredients-cards">
-                    <div class="card-body">
-                        <h5 class="card-title">Dairy & Eggs</h5>
-                        <p class="card-text">0/64 ingredients</p>
-                        <hr>
-                        <div class="d-flex flex-wrap flex-section" id="dairy-section">
-                            <div class="ingredient">butter</div>
-                            <div class="ingredient">egg</div>
-                            <div class="ingredient">milk</div>
-                            <div class="ingredient">cream</div>
-                            <div class="ingredient">yogurt</div>
-                            <div class="ingredient">buttermilk</div>
-                            <div class="ingredient" id="ingredients-dairy">+58 More</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card ingredients-cards">
-                    <div class="card-body">
-                        <h5 class="card-title">Herbs & Spices</h5>
-                        <p class="card-text">0/100 ingredients</p>
-                        <hr>
-
-                        <div class="d-flex flex-wrap flex-section" id="herbs-section">
-                            <div class="ingredient">cinnamon</div>
-                            <div class="ingredient">parsley</div>
-                            <div class="ingredient">paprika</div>
-                            <div class="ingredient">cumin</div>
-                            <div class="ingredient">chili powder</div>
-                            <div class="ingredient">oregano</div>
-                            <div class="ingredient" id="ingredients-herbs">+94 More</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="card ingredients-cards">
-                    <div class="card-body">
-                        <h5 class="card-title">Baking</h5>
-                        <p class="card-text">0/100 ingredients</p>
-                        <hr>
-
-                        <div class="d-flex flex-wrap flex-section" id="baking-section">
-                            <div class="ingredient">flour</div>
-                            <div class="ingredient">vanilla</div>
-                            <div class="ingredient">baking powder</div>
-                            <div class="ingredient">baking soda</div>
-                            <div class="ingredient">cornstarch</div>
-                            <div class="ingredient">yeast</div>
-                            <div class="ingredient" id="ingredients-baking">+94 More</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card ingredients-cards">
-                    <div class="card-body">
-                        <h5 class="card-title">Meat</h5>
-                        <p class="card-text">0/100 ingredients</p>
-                        <hr>
-
-                        <div class="d-flex flex-wrap flex-section" id="meat-section">
-                            <div class="ingredient">chicken</div>
-                            <div class="ingredient">bacon</div>
-                            <div class="ingredient">ground beef</div>
-                            <div class="ingredient">beef steak</div>
-                            <div class="ingredient">ham</div>
-                            <div class="ingredient">ground pork</div>
-                            <div class="ingredient" id="ingredients-meat">+94 More</div>
-                        </div>
-                    </div>
-                </div>
-            
-         
+                
         </div>
             <div class="col-lg-9">
                 <table>
                     <tr >
-                       {%for j in cat%}
+                       {% for j in cat %}
                             <td width="5%">
-                                <button class="cat-button" style="background-image : url('{{j.cat_img.url}}')" ></button>
+                                <form action="/search_cat" method = "get">
+                                <button class="cat-button" style="background-image : url('{{ STATIC_URL }}{{j.cat_img.url}}')" name="cat_btn"
+                                value="{{j.cat_name}}"></button>
+                                </form>
                                 <address>{{j.cat_name}}</address>
                             </td>
-                             {%endfor%}
+                             {% endfor %}
                         
                     </tr>
                 </table>
@@ -195,7 +140,7 @@
                         </div>
 
                         <div class="carousel-item" style="height: 410px;">
-                            <img class="img-fluid" src="{% static 'img/carousel-2.jpg' %}" alt="Image">
+                            <img class="img-fluid" src="{% static 'img/cat-2.jpg' %}" alt="Image">
                             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
             
                             </div>
@@ -229,8 +174,8 @@
             {%for i in rec%}
             <div class="col-lg-4 col-md-6 pb-1 word">
                 <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
-                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
-                        <img class="img-fluid" src="{{i.img.url}}" alt="">
+                    <a   href="/details?name={{i.name}}" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="{{ STATIC_URL }}{{ i.img.url }}" alt="">
                     </a>
                     <h5 class="font-weight-semi-bold m-0">{{i.name}}</h5>
                     <p>{{i.rec_desc}}</p>
@@ -263,11 +208,11 @@
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-dark mb-2" href="/"><i class="fa fa-angle-right mr-2"></i>Home</a>
                             
-                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                            <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                            <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                            <a class="text-dark mb-2" href="/cart"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <!-- <a class="text-dark mb-2" href="/checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a> -->
+                            <a class="text-dark" href="/contact"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
                         </div>
                     </div>
                    
@@ -289,39 +234,6 @@
                 </div>
             </div>
         </div>
-        <!-- Footerbar Start -->
-    <div class="container-fluid2">
-        <div class="row bg-secondary py-2 px-xl-5">
-            <div class="col-lg-6 d-none d-lg-block">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text" href="">FAQs</a>
-                    <span class="text pl-2">| </span>
-                    <a class="text" href=""> Help</a>
-                    <span class="text pl-2">|</span>
-                    <a class="text" href=""> Support</a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    <!-- Footerbar End -->
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>

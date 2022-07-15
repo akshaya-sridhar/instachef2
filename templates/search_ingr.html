@@ -1,0 +1,162 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>InstaChef Dashboard</title>
+    
+   <!-- Font Awesome -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <link rel="preconnect" href="https://fonts.gstatic.com">
+   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+       rel="stylesheet">
+
+   
+   <link href="{% static 'css/font-awesome/all.css' %}" rel="stylesheet">
+   <link href="{% static 'css/style.css'%}" rel="stylesheet" type="text/css">
+</head>
+
+
+<body style="max-width: 100%;overflow-x: hidden;">
+    {% block base %}
+    <div class="row align-items-center py-3 px-xl-5" id="parent-topbar">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'img/Logo1.png'%}" alt="Logo" width="210px" height="70px">
+                </a>
+            </div>
+        </nav>
+        <div class="col-lg-9">
+            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mr-auto py-0">
+                        <a href="/" class="nav-item nav-link">Home</a>
+                        <a href="/requestrecipe" class="nav-item nav-link">Request Recipe</a>
+                        <a href="/cart" class="nav-item nav-link">Ingredients for Pantry</a>
+                        <a href="/contact" class="nav-item nav-link">Contact</a>
+                        
+                </div>
+            </nav>
+        </div>
+        </div>
+    </div>
+    <!-- Topbar End -->
+    <!-- Navbar Start -->
+    
+            <div class="col-lg-9">
+                <table>
+                    <tr >
+                       {%for j in cat%}
+                            <td width="5%">
+                                <button class="cat-button" style="background-image : url('{{j.cat_img.url}}')" ></button>
+                                <address>{{j.cat_name}}</address>
+                            </td>
+                             {%endfor%}
+                        
+                    </tr>
+                </table>
+
+                <div class="container-fluid pt-5">
+                    <div class="text-center mb-4">
+                        <h4 class="section-title px-5"><span class="px-2">Recipes</span></h4>
+                    </div>
+            
+                    <div class="row pb-3">
+                        {% block body %}
+                        {% for i in list1 %}
+                            {% for post in i %}
+                        
+                            <div class="col-lg-4 col-md-6 pb-1">
+                                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                                    <a href="/details?name={{post.name}}" class="cat-img position-relative overflow-hidden mb-3">
+                                        <img class="img-fluid" src="{{ STATIC_URL }}{{post.img.url}}" alt="">
+                                    </a>
+                                    <h5 class="font-weight-semi-bold m-0">{{post.name}}</h5>
+                                    <div class="star">
+                                       
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            {%endfor%}
+                            {%endfor%}
+                        {% endblock body %}
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+    
+    {% endblock %}
+    <!-- Navbar End -->
+<!-- Categories Start -->
+    
+    <!-- Categories End -->
+   
+     <!-- Footer Start -->
+     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'img/Logo1.png'%}" alt="Logo" width="210px" height="70px">
+                </a>
+                 <br><br>
+                <p>A personalized Cooking Website which not only helps <br>you in cooking but also allows you to post recipes.</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>1st Main S.G Palya, Benagluru</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>InstaChef@gmail.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-dark mb-2" href="/"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            
+                            <a class="text-dark mb-2" href="/cart"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <!-- <a class="text-dark mb-2" href="/checkout"><i class="fa fa-angle-right mr-2"></i>Checkout</a> -->
+                            <a class="text-dark" href="/contact"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                        </div>
+                    </div>
+                   
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Contact Us</h5>
+                        <form action="">
+                            <div class="form-group">
+                                <input type="text" class="form-control border-0 py-4" placeholder="Your Name" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control border-0 py-4" placeholder="Your Email"
+                                    required="required" />
+                            </div>
+                            <div>
+                                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{% static '/lib/easing/easing.min.js' %}"></script>
+<script src="{% static '/lib/owlcarousel/owl.carousel.js' %}"></script>
+<script src="{% static '/js/ingredients-script.js' %}"></script>
+
+{% block content %}{% endblock %}
+
+</body>
+
+</html>
+
+

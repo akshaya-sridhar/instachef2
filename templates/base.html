@@ -1,0 +1,330 @@
+i{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>InstaChef Dashboard</title>
+    
+   <!-- Font Awesome -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <link href="{% static 'css/font-awesome/all.css' %}" rel="stylesheet">
+   <link href="{% static 'css/style.css'%}" rel="stylesheet" type="text/css">
+</head>
+
+
+<body style="max-width: 100%;overflow-x: hidden;">
+    {% block base %}
+    <div class="row align-items-center py-3 px-xl-5">
+        <nav class="navbar navbar-lght bg-light">
+            <div class="container">
+              <a class="navbar-brand" href="#">
+                <img src="{% static 'img/Logo1.png'%}" alt="Logo" width="210px" height="70px">
+              </a>
+            </div>
+          </nav>
+        <div class="col-lg-6 col-6 text-left">
+            <form method="get" action="/search">
+                <div class="input-group search-width">
+                    <input type="text" class="form-control" placeholder="Search Recipes"  name='query' id='query' >
+                   
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-transparent text-primary">
+                            <input type = "submit" value="" class="fa fa-search" >   
+                        </span>
+                    </div>
+                    <a href="/requestrecipe" class="nav-item nav-link align-items-center ">Request Recipe</a>
+                    <a href="/contact" class="nav-item nav-link active">Contact Us</a>
+                </div>
+            </form>
+        </div>
+       
+        <div class="col-lg-3 col-6 text-right">
+            <a href="/login" class="btn border">
+                <i class="fa fa-user fa-fw text-primary"></i> 
+            </a>
+            <a href="" class="btn border">
+                <i class="fas fa-heart text-primary"></i>
+                <span class="badge">0</span>
+            </a>
+            <a href="/cart" class="btn border">
+                <i class="fas fa-shopping-cart text-primary"></i>
+                <span class="badge">0</span>
+            </a>
+        </div>
+
+        
+    </div>
+    </div>
+    <!-- Topbar End -->
+    <!-- Navbar Start -->
+    <div class="container-fluid mb-5">
+        <div class="row border-top px-xl-5">
+            <div class="col-lg-3 d-none d-lg-block ingr-panel" >
+                <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;" >
+                    <h6 class="m-0">Ingredients</h6>
+                </a>
+
+                <div class="card ingredients-cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Vegetables & Greens</h5>
+                        <p class="card-text">0/100 ingredients</p>
+                        <hr>
+
+                        <div class="d-flex flex-wrap flex-section" id="vegetables-section">
+                            <div class="ingredient">garlic</div>
+                            <div class="ingredient">onion</div>
+                            <div class="ingredient">bell pepper</div>
+                            <div class="ingredient">tomato</div>
+                            <div class="ingredient">carrot</div>
+                            <div class="ingredient" id="ingredients-vegetables">+94 More</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card ingredients-cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Fruits & Berries</h5>
+                        <p class="card-text">0/100 ingredients</p>
+                        <hr>
+
+                        <div class="d-flex flex-wrap flex-section" id="fruits-section">
+                            <div class="ingredient">orange</div>
+                            <div class="ingredient">pineapple</div>
+                            <div class="ingredient">mango</div>
+                            <div class="ingredient">pomegranate</div>
+                            <div class="ingredient">blackberry</div>
+                            <div class="ingredient">blueberry</div>
+                            <div class="ingredient" id="ingredients-fruits">+94 More</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card ingredients-cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Dairy & Eggs</h5>
+                        <p class="card-text">0/64 ingredients</p>
+                        <hr>
+                        <div class="d-flex flex-wrap flex-section" id="dairy-section">
+                            <div class="ingredient">butter</div>
+                            <div class="ingredient">egg</div>
+                            <div class="ingredient">milk</div>
+                            <div class="ingredient">cream</div>
+                            <div class="ingredient">yogurt</div>
+                            <div class="ingredient">buttermilk</div>
+                            <div class="ingredient" id="ingredients-dairy">+58 More</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card ingredients-cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Herbs & Spices</h5>
+                        <p class="card-text">0/100 ingredients</p>
+                        <hr>
+
+                        <div class="d-flex flex-wrap flex-section" id="herbs-section">
+                            <div class="ingredient">cinnamon</div>
+                            <div class="ingredient">parsley</div>
+                            <div class="ingredient">paprika</div>
+                            <div class="ingredient">cumin</div>
+                            <div class="ingredient">chili powder</div>
+                            <div class="ingredient">oregano</div>
+                            <div class="ingredient" id="ingredients-herbs">+94 More</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card ingredients-cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Baking</h5>
+                        <p class="card-text">0/100 ingredients</p>
+                        <hr>
+
+                        <div class="d-flex flex-wrap flex-section" id="baking-section">
+                            <div class="ingredient">flour</div>
+                            <div class="ingredient">vanilla</div>
+                            <div class="ingredient">baking powder</div>
+                            <div class="ingredient">baking soda</div>
+                            <div class="ingredient">cornstarch</div>
+                            <div class="ingredient">yeast</div>
+                            <div class="ingredient" id="ingredients-baking">+94 More</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card ingredients-cards">
+                    <div class="card-body">
+                        <h5 class="card-title">Meat</h5>
+                        <p class="card-text">0/100 ingredients</p>
+                        <hr>
+
+                        <div class="d-flex flex-wrap flex-section" id="meat-section">
+                            <div class="ingredient">chicken</div>
+                            <div class="ingredient">bacon</div>
+                            <div class="ingredient">ground beef</div>
+                            <div class="ingredient">beef steak</div>
+                            <div class="ingredient">ham</div>
+                            <div class="ingredient">ground pork</div>
+                            <div class="ingredient" id="ingredients-meat">+94 More</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <table class = "cat-table">
+                    <tr >
+                        <td width="5%">
+                            <button class="cat-button btn1"></button>
+                            <address>North Indian</address>
+                        </td>
+                        <td  width="5%">
+                            <button class="cat-button btn2"></button>
+                            <address>South Indian</address>
+                        </td>
+                        <td  width="5%">
+                            <button class="cat-button btn3" ></button>
+                            <address>Chinese</address>
+                        </td>
+                        <td  width="5%">
+                            <button class="cat-button btn4"></button>
+                            <address>Italian</address>
+                        </td>
+                        <td  width="5%">
+                            <button class="cat-button btn5"></button>
+                            <address>Easy & Quick</address>
+                        </td>
+                        <td  width="5%">
+                            <button class="cat-button btn6"></button>
+                            <address>Ocassional</address>
+                        </td>
+                        <td  width="5%">
+                            <button class="cat-button btn7"></button>
+                            <address>Seasonal </address>
+                        </td>
+                    </tr>
+                </table>
+                
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+    
+    {% endblock %}
+    <!-- Navbar End -->
+<!-- Categories Start -->
+    <div class="container-fluid pt-5">
+        <div class="text-center mb-4">
+            <h2 class="section-title px-5"><span class="px-2">Recipes</span></h2>
+        </div>
+
+        <div class="row px-xl-5 pb-3">
+            {%for i in rec%}
+            <div class="col-lg-4 col-md-6 pb-1">
+                <div class="cat-item d-flex flex-column border mb-4" style="padding: 30px;">
+                    <a href="" class="cat-img position-relative overflow-hidden mb-3">
+                        <img class="img-fluid" src="{{i.img.url}}" alt="">
+                    </a>
+                    <h5 class="font-weight-semi-bold m-0">{{i.name}}</h5>
+                    <div class="star">
+                       
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            
+        </div>
+    </div>
+    <!-- Categories End -->
+   
+     <!-- Footer Start -->
+     <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
+        <div class="row px-xl-5 pt-5">
+            <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
+                <a class="navbar-brand" href="#">
+                    <img src="{% static 'img/Logo1.png'%}" alt="Logo" width="210px" height="70px">
+                </a>
+                 <br><br>
+                <p>A personalized Cooking Website which not only helps <br>you in cooking but also allows you to post recipes.</p>
+                <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>1st Main S.G Palya, Benagluru</p>
+                <p class="mb-2"><i class="fa fa-envelope text-primary mr-3"></i>InstaChef@gmail.com</p>
+                <p class="mb-0"><i class="fa fa-phone-alt text-primary mr-3"></i>+012 345 67890</p>
+            </div>
+            <div class="col-lg-8 col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
+                        <div class="d-flex flex-column justify-content-start">
+                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            
+                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
+                            <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                        </div>
+                    </div>
+                   
+                    <div class="col-md-4 mb-5">
+                        <h5 class="font-weight-bold text-dark mb-4">Contact Us</h5>
+                        <form action="">
+                            <div class="form-group">
+                                <input type="text" class="form-control border-0 py-4" placeholder="Your Name" required="required" />
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-control border-0 py-4" placeholder="Your Email"
+                                    required="required" />
+                            </div>
+                            <div>
+                                <button class="btn btn-primary btn-block border-0 py-3" type="submit">Subscribe Now</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footerbar Start -->
+    <div class="container-fluid2">
+        <div class="row bg-secondary py-2 px-xl-5">
+            <div class="col-lg-6 d-none d-lg-block">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text" href="">FAQs</a>
+                    <span class="text pl-2">| </span>
+                    <a class="text" href=""> Help</a>
+                    <span class="text pl-2">|</span>
+                    <a class="text" href=""> Support</a>
+                </div>
+            </div>
+            <div class="col-lg-6 text-center text-lg-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="text pl-2" href="">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a class="text pl-2" href="">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a class="text pl-2" href="">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a class="text pl-2" href="">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a class="text pl-2" href="">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <!-- Footerbar End -->
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="{% static '/lib/easing/easing.min.js' %}"></script>
+<script src="{% static '/lib/owlcarousel/owl.carousel.js' %}"></script>
+<script src="{% static '/js/ingredients-script.js' %}"></script>
+
+{% block content %}{% endblock %}
+
+</body>
+
+</html>

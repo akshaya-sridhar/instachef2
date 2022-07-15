@@ -42,12 +42,30 @@
   box-sizing: border-box;
 }
 
+
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+
+
+#button123{
+  background-color: #c75f3f;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
@@ -81,6 +99,30 @@ body {
     cursor: pointer;
 }
 
+.recipe-div {
+  height: 300px;
+  width: 300px;
+  background-color: #000;
+}
+
+#nav1{
+  background-color: white;
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+
+  /* Pay special attention here! */
+  position: sticky;
+  top: 0px;
+  z-index: 1;
+}
+
+@media
+(prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
 .ingredient-selected {
     background-color: #fd7e14;
     text-transform: uppercase;
@@ -122,32 +164,8 @@ body {
   padding: 60x;
 }
 
-.btn1 {
-  background-image: url("../img/cat-1.jpg");
-}
-
-.btn2 {
-  background-image: url("../img/cat-2.jpg");
-}
-
-.btn3 {
-  background-image: url("../img/cat-24.jpg");
-}
-
-.btn4 {
-  background-image: url("../img/cat-6.jpg");
-}
-
-.btn5 {
-  background-image: url("../img/easy.jpg");
-}
-
-.btn6 {
-  background-image: url("../img/cat-20.jpg");
-}
-
-.btn7 {
-  background-image: url("../img/cat-24.jpg");
+.recipe-img {
+  background-size: cover;
 }
 
 /*.cat-button{
@@ -3656,7 +3674,7 @@ input[type="button"].btn-block {
   display: block;
   min-height: 1.5rem;
   padding-left: 1.5rem;
-  color-adjust: exact;
+ 
 }
 
 .custom-control-inline {

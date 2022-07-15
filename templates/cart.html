@@ -7,8 +7,14 @@
     <meta charset="utf-8">
     <title>Shopping List</title>
 
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/font-awesome/all.css' %}" rel="stylesheet">
 </head>
 
 <body style="max-width: 100%;overflow-x: hidden;">
@@ -16,7 +22,7 @@
     <div class="row align-items-center py-3 px-xl-5" id="parent-topbar">
         <nav class="navbar navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="/">
                     <img src="{% static 'img/Logo1.png'%}" alt="Logo" width="210px" height="70px">
                 </a>
             </div>
@@ -25,11 +31,10 @@
             <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="index.html" class="nav-item nav-link">Home</a>
-                        <a href="Requestrecipe.html" class="nav-item nav-link">Request Recipe</a>
-                        <a href="cart.html" class="nav-item nav-link">Ingredients for Pantry</a>
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        
+                        <a href="/" class="nav-item nav-link">Home</a>
+                        <a href="/requestrecipe" class="nav-item nav-link">Request Recipe</a>
+                        <a href="/cart" class="nav-item nav-link">Ingredients for Pantry</a>
+                        <a href="/contact" class="nav-item nav-link">Contact</a>   
                 </div>
             </nav>
         </div>
@@ -69,7 +74,7 @@
 
 
     <!-- Cart Start -->
-    <div class="container-fluid pt-5">
+    
         <div class="row px-xl-5">
             <div class="col-lg-8 table-responsive mb-5">
                 <table class="table table-bordered text-center mb-0">
@@ -81,125 +86,53 @@
                         </tr>
                     </thead>
                     <tbody class="align-middle">
+                    {% for j in list1%}
+                        {%for i in j%}
                         <tr>
-                            <td class="align-middle"><img src="img/product-1.jpg" alt="" style="width: 50px;"> Rice</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
+                            <td class="align-middle">{{i.ing_name}}</td>
+                            <td class="align-middle"><input type = "text" value = ""></td>
                             <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
                         </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/product-2.jpg" alt="" style="width: 50px;"> Milk</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/product-3.jpg" alt="" style="width: 50px;"> Capsicum</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/product-4.jpg" alt="" style="width: 50px;">Peanuts </td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                        </tr>
-                        <tr>
-                            <td class="align-middle"><img src="img/product-5.jpg" alt="" style="width: 50px;">Potato</td>
-                            <td class="align-middle">
-                                <div class="input-group quantity mx-auto" style="width: 100px;">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-minus" >
-                                        <i class="fa fa-minus"></i>
-                                        </button>
-                                    </div>
-                                    <input type="text" class="form-control form-control-sm bg-secondary text-center" value="1">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-sm btn-primary btn-plus">
-                                            <i class="fa fa-plus"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="align-middle"><button class="btn btn-sm btn-primary"><i class="fa fa-times"></i></button></td>
-                        </tr>
+                        {%endfor%}
+                    {%endfor%}
                     </tbody>
                 </table>
             </div>
-            <div class="col-lg-4">
-                <div class="card border-secondary mb-5">
-                    <div class="card-header bg-secondary border-0">
-                        <h4 class="font-weight-semi-bold m-0">Invantry Summary</h4>
-                    </div>
-                    <div class="card-body">
-                        <div class="d-flex justify-content-between mb-3 pt-1">
-                            <h6 class="font-weight-medium">Date </h6>
-                            <h6 class="font-weight-medium">21 Mar 2022</h6>
+            
+            <div class="col-lg-3 d-none d-lg-block ingr-panel" >
+                    <a class="btn shadow-none d-flex align-items-center justify-content-between bg-primary text-white w-100" data-toggle="collapse" href="#navbar-vertical" style="height: 65px; margin-top: -1px; padding: 0 30px;" >
+                        <h6 class="m-0">Ingredients</h6>
+                    </a>
+                    
+                    <div class="card ingredients-cards">
+                        <form method="post" action="/cart">
+                            {% csrf_token %}
+                            {%for i in ingr_type%}
+                        <div class="card-body">
+                            <h5 class="card-title">{{i}}</h5>
+                            {% comment %} <p class="card-text">0/100 ingredients</p> {% endcomment %}
+                            <hr>
+                           
+                            <div class="d-flex flex-wrap flex-section" id="ingr_id">
+                                {%for j in ingr_name%}
+                                    {%if j.ing_type == i %}
+                                   
+                                        <input type ="checkbox" class = "ingredient" name="ingr_det" value= {{j}}>
+                                        <label for="{{j}}">{{j}}</label>
+                                    
+                                    {%endif%}
+                                {%endfor%}
+                                {% comment %} <div class="ingredient" id="ingredients-vegetables">+94 More</div> {% endcomment %}
+                            </div>
+                            
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <h6 class="font-weight-medium">Day</h6>
-                            <h6 class="font-weight-medium">Sunday</h6>
-                        </div>
+                        {%endfor%}
+                        <input type="submit" id="button123" value="Add to cart" >
+                    </form>
                     </div>
-                        <button class="btn btn-block btn-primary my-3 py-3">Done </button>
-                    </div>
-                </div>
             </div>
         </div>
-    </div>
+    
     <!-- Cart End -->
 
 
@@ -207,8 +140,8 @@
      <div class="container-fluid bg-secondary text-dark mt-5 pt-5">
         <div class="row px-xl-5 pt-5">
             <div class="col-lg-4 col-md-12 mb-5 pr-3 pr-xl-5">
-                <a class="navbar-brand" href="#">
-                    <img src="img/Logo1.png" alt="Logo" width="210px" height="70px">
+                <a class="navbar-brand" href="/">
+                    <img src="{% static 'img/Logo1.png'%}" alt="Logo" width="210px" height="70px">
                 </a>
                  <br><br>
                 <p>A personalized Cooking Website which not only helps <br>you in cooking but also allows you to post recipes.</p>
@@ -221,11 +154,11 @@
                     <div class="col-md-4 mb-5">
                         <h5 class="font-weight-bold text-dark mb-4">Quick Links</h5>
                         <div class="d-flex flex-column justify-content-start">
-                            <a class="text-dark mb-2" href="index.html"><i class="fa fa-angle-right mr-2"></i>Home</a>
+                            <a class="text-dark mb-2" href="/"><i class="fa fa-angle-right mr-2"></i>Home</a>
                             
-                            <a class="text-dark mb-2" href="cart.html"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
-                            <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a>
-                            <a class="text-dark" href="contact.html"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
+                            <a class="text-dark mb-2" href="/cart"><i class="fa fa-angle-right mr-2"></i>Shopping Cart</a>
+                            <!-- <a class="text-dark mb-2" href="checkout.html"><i class="fa fa-angle-right mr-2"></i>Checkout</a> -->
+                            <a class="text-dark" href="/contact"><i class="fa fa-angle-right mr-2"></i>Contact Us</a>
                         </div>
                     </div>
                    
@@ -247,39 +180,6 @@
                 </div>
             </div>
         </div>
-        <!-- Footerbar Start -->
-    <div class="container-fluid2">
-        <div class="row bg-secondary py-2 px-xl-5">
-            <div class="col-lg-6 d-none d-lg-block">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text" href="">FAQs</a>
-                    <span class="text pl-2">| </span>
-                    <a class="text" href=""> Help</a>
-                    <span class="text pl-2">|</span>
-                    <a class="text" href=""> Support</a>
-                </div>
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-linkedin-in"></i>
-                    </a>
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a class="text pl-2" href="">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    <!-- Footerbar End -->
 
    
 </body>
